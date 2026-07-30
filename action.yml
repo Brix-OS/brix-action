@@ -60,11 +60,11 @@ runs:
       shell: bash
       name: Set LANG
     - run: |
-        wget -nv https://github.com/Brix-OS/brix/releases/download/v0.0.0-alpha/brix-binary-master.x86_64-linux.tar.xz -O brix-binary-master.x86_64-linux.tar.xz
+        wget -nv https://ci.guix.gnu.org/search/latest/archive?query=spec:tarball+status:success+system:x86_64-linux+guix-binary.tar.xz -O guix-binary-nightly.x86_64-linux.tar.xz
       shell: bash
       name: Download
     - run: |
-        sudo -- tar --extract --file "brix-binary-master.x86_64-linux.tar.xz" -C / --no-overwrite-dir
+        sudo -- tar --extract --file "guix-binary-nightly.x86_64-linux.tar.xz" -C / --no-overwrite-dir
         sudo -- groupadd --system guixbuild
 
         for i in $(seq -w 1 10); do
