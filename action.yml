@@ -106,6 +106,7 @@ runs:
       if: ${{ inputs.pullAfterInstall == 'true' }}
     # Substitute newlines to work-around GitHubs single-line limitation.
     - run: |
+        /var/guix/profiles/per-user/root/current-guix/bin/guix describe
         echo "channels=$(/var/guix/profiles/per-user/root/current-guix/bin/guix describe -f channels | tr '\n' ' ')" >> $GITHUB_OUTPUT
       shell: bash
       name: guix describe
