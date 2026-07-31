@@ -60,7 +60,7 @@ runs:
       shell: bash
       name: Set LANG
     - run: |
-        wget -nv https://github.com/Brix-OS/brix/releases/download/v0.0.0-alpha/brix-binary-alpha.x86_64-linux.tar.xz -O brix-binary.x86_64-linux.tar.xz
+        wget -nv https://github.com/Brix-OS/brix/releases/download/testing/brix-binary-testing.x86_64-linux.tar.xz -O brix-binary.x86_64-linux.tar.xz
       shell: bash
       name: Download
     - run: |
