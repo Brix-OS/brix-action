@@ -66,6 +66,9 @@ runs:
       name: Download
     - run: |
         sudo -- tar --extract --file "brix-binary.x86_64-linux.tar.xz" -C / --no-overwrite-dir
+
+        /var/guix/profiles/per-user/root/current-guix/bin/guix describe
+        
         sudo -- groupadd --system guixbuild
 
         for i in $(seq -w 1 10); do
