@@ -95,6 +95,7 @@ runs:
               sudo /var/guix/profiles/per-user/root/current-guix/bin/guix archive --authorize < $F
           done
     - name: Authorize Nonguix substitutes
+      shell: bash
       run: |
         wget -q https://substitutes.nonguix.org/signing-key.pub -O /tmp/nonguix.pub
         sudo /var/guix/profiles/per-user/root/current-guix/bin/guix archive --authorize < /tmp/nonguix.pub
