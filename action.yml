@@ -23,7 +23,7 @@ inputs:
 
       [Service]
       ExecStart=/var/guix/profiles/per-user/root/current-guix/bin/guix-daemon \
-          --build-users-group=guixbuild --discover=yes
+          --build-users-group=guixbuild --discover=yes --substitute-urls='https://bordeaux.guix.gnu.org https://ci.guix.gnu.org https://substitutes.nonguix.org'
       Environment='GUIX_LOCPATH=/var/guix/profiles/per-user/root/guix-profile/lib/locale' LC_ALL=en_US.utf8
 
       StandardOutput=syslog
@@ -94,6 +94,10 @@ runs:
           for F in /var/guix/profiles/per-user/root/current-guix/share/guix/*.pub; do
               sudo /var/guix/profiles/per-user/root/current-guix/bin/guix archive --authorize < $F
           done
+    - name: Authorize Nonguix substitutes
+      run: |
+        wget -q https://substitutes.nonguix.org/signing-key.pub -O /tmp/nonguix.pub
+        sudo /var/guix/profiles/per-user/root/current-guix/bin/guix archive --authorize < /tmp/nonguix.pub
     - run: sudo /var/guix/profiles/per-user/root/current-guix/bin/guix archive --generate-key
       shell: bash
       name: Generate keys
